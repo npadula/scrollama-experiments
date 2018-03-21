@@ -5,9 +5,12 @@ import App from './App'
 import router from './router'
 import SuiVue from 'semantic-ui-vue';
 import '../semantic/dist/semantic.min.css';
+import VueTippy from 'vue-tippy'
 
+Vue.use(VueTippy);
 Vue.config.productionTip = false;
 Vue.use(SuiVue);
+
 
 
 /* eslint-disable no-new */

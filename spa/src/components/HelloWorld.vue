@@ -3,8 +3,10 @@
    <sui-button>
    Test
    </sui-button>
- <sui-grid :columns="2" >
- <sui-grid-column :style="{marginLeft: '10px'}">
+ <sui-grid :stackable="true">
+ <sui-grid-row :style="{marginLeft:'10px', marginRight:'10px'}" :columns="2">
+ 
+ <sui-grid-column>
 <sui-segment raised>
   
 
@@ -99,99 +101,91 @@
       </sui-feed-content>
     </sui-feed-event>
 
-
-
-    <sui-feed-event>
-
-      <sui-feed-label image="static/helen.jpg" />
+         <sui-feed-event>
+      <sui-feed-label><sui-icon :style="{backgroundColor:'gray'}" name="laptop" /> </sui-feed-label>
       <sui-feed-content>
         <sui-feed-summary>
-          <a>Helen Troy</a> added <a>2 new illustrations</a>
-          <sui-feed-date>4 days ago</sui-feed-date>
+          Worked as a Freelance Developer
+       
+          <sui-feed-date>Jan 2015 - Feb 2016</sui-feed-date>
         </sui-feed-summary>
-        <sui-feed-extra :images="true">
-          <a><img src="static/images/wireframes/image.png" ></a>
-          <a><img src="static/images/wireframes/image.png" ></a>
-        </sui-feed-extra>
-        <sui-feed-meta>
-          <sui-feed-like>
-            <sui-icon name="like" />
-            1 Like
-          </sui-feed-like>
-        </sui-feed-meta>
+
+                <sui-feed-extra :style="{maxWidth:'730px'}" :text="true">
+               <p> Analysis, Design and Development of software solutions for small and middle-sized agricultural companies.</p>
+                <p>
+                <sui-label :class="{tag: true}">
+                  C# .NET
+                </sui-label>
+                <sui-label :class="{tag: true}">
+                  Entity Framework
+                </sui-label>    
+                <sui-label :class="{tag: true}">
+                  Scrum
+                </sui-label>
+                </p>
+              </sui-feed-extra>
+
       </sui-feed-content>
     </sui-feed-event>
 
-    <sui-feed-event>
-      <sui-feed-label image="static/images/avatar/small/jenny.jpg" />
-      <sui-feed-content>
-        <sui-feed-summary date="2 Days Ago" user="Jenny Hess" content=" add you as a friend" />
-        <sui-feed-meta>
-          <sui-feed-like>
-            <sui-icon name="like" />
-            8 Likes
-          </sui-feed-like>
-        </sui-feed-meta>
-      </sui-feed-content>
-    </sui-feed-event>
 
-    <sui-feed-event>
-      <sui-feed-label image="static/images/avatar/small/joe.jpg" />
+
+
+     <sui-feed-event>
+      <sui-feed-label image="static/utn_logo.png" />
       <sui-feed-content>
         <sui-feed-summary>
-          <a>Joe Henderson</a> posted on his page
-          <sui-feed-date>3 days ago</sui-feed-date>
+          Started attending to UTN-FRSF
+       
+          <sui-feed-date>Jan 2011</sui-feed-date>
         </sui-feed-summary>
 
-
-        <sui-feed-extra :text="true">
-          Ours is a life of constant reruns. We're always circling back to where we'd we started,
-          then starting all over again. Even if we don't run extra laps that day, we surely will
-          come back for more of the same another day soon.
-        </sui-feed-extra>
-
-
-        <sui-feed-meta>
-          <sui-feed-like>
-            <sui-icon name="like" />
-            5 Likes
-          </sui-feed-like>
-        </sui-feed-meta>
+                <sui-feed-extra :style="{maxWidth:'730px'}" :text="true">
+               <p> Information Systems Engineering</p>
+              </sui-feed-extra>
 
       </sui-feed-content>
     </sui-feed-event>
 
-    <sui-feed-event>
-      <sui-feed-label image="static/images/avatar/small/justen.jpg" />
-      <sui-feed-content>
-        <sui-feed-summary>
-          <a>Justen Kitsune</a> added <a>2 new photos</a> of you
-          <sui-feed-date>4 days ago</sui-feed-date>
-        </sui-feed-summary>
-        <sui-feed-extra :images="true">
-          <a><img src="static/images/wireframes/image.png" ></a>
-          <a><img src="static/images/wireframes/image.png" ></a>
-        </sui-feed-extra>
-        <sui-feed-meta>
-          <sui-feed-like>
-            <sui-icon name="like" />
-            41 Likes
-          </sui-feed-like>
-        </sui-feed-meta>
-      </sui-feed-content>
-    </sui-feed-event>
+    
   </sui-feed>
 
   </sui-segment>
  </sui-grid-column>
  
- 
+ <sui-grid-column>
+ <sui-segment raised>
+
+
+<span v-tippy="{ html: '#template-1', interactive : true, theme : 'translucent' }">
+    Static HTML Template
+</span>
+  </sui-segment>
+ </sui-grid-column>
+ </sui-grid-row>
  </sui-grid>
- 
+
+
+<div id="template-1" class="hidden">
+    <div class="max-w-md w-full">
+        <div class="m-2">
+            <div class="text-black font-bold text-xl">
+                Can coffee make you a better developer?
+            </div>
+            <p class="text-grey-darker text-base">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                Voluptatibus quia, nulla! Maiores et perferendis eaque,
+                exercitationem praesentium nihil.
+            </p>
+        </div>
+    </div>
+</div>    
   </div>
+
 </template>
 
 <script>
+
 export default {
   name: 'HelloWorld',
   data () {
@@ -204,5 +198,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.hidden {
+  display: none;
+}
 </style>
