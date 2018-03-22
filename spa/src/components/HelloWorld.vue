@@ -4,7 +4,7 @@
    Test
    </sui-button>
  <sui-grid :stackable="true">
- <sui-grid-row :style="{marginLeft:'10px', marginRight:'10px'}" :columns="2">
+ <sui-grid-row :stretched="true" :style="{marginLeft:'10px', marginRight:'10px'}" :columns="2">
  
  <sui-grid-column>
 <sui-segment raised>
@@ -80,7 +80,7 @@
         <sui-feed-summary>
           Worked as a Research Fellow on INGAR (UTN-CONICET)
        
-          <sui-feed-date>Sept 2014 - Sept 2017</sui-feed-date>
+          <sui-feed-date>Jun 2014 - Dec 2016</sui-feed-date>
         </sui-feed-summary>
 
                 <sui-feed-extra :style="{maxWidth:'730px'}" :text="true">
@@ -155,7 +155,30 @@
  
  <sui-grid-column>
  <sui-segment raised>
+<sui-card>
+        <sui-dimmer-dimmable
+          @mouseenter.native="profileCardActive = true"
+          @mouseleave.native="profileCardActive = false">
+          <sui-image src="static/profile.jpg" />
+          <sui-dimmer blurring :active="profileCardActive">
+            <sui-button inverted><sui-icon name="mail"/>Contact me</sui-button>
+          </sui-dimmer>
+        </sui-dimmer-dimmable>
+      <sui-card-content>
+        <sui-card-header>Nicolas Padula</sui-card-header>
+        <sui-card-meta>24 - <sui-icon name="map marker alternate"></sui-icon>Santa Fe, AR</sui-card-meta>
+        <sui-card-description>Kristy is an art direcadsfsdfgdfgsdfgdfgdgdgd
+        dfgdfgdgdgd
+        ghftor living in New York.</sui-card-description>
+      </sui-card-content>
+      <sui-card-content extra>
+        <a href="http://github.com/npadula"><sui-icon name="github" /></a>
+        <a href="http://linkedin.com/in/npadula"><sui-icon name="linkedin" /></a>
+        <a href="http://nvpadula.wordpress.com"><sui-icon name="wordpress" /></a>
+        <a href="mailto:nicolasvpadula@gmail.com"><sui-icon name="mail" /></a>
 
+        </sui-card-content>
+    </sui-card>
 
 <span v-tippy="{ html: '#template-1', interactive : true, theme : 'translucent' }">
     Static HTML Template
@@ -190,7 +213,8 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      profileCardActive: false,
     }
   }
 }
@@ -200,5 +224,20 @@ export default {
 <style scoped>
 .hidden {
   display: none;
+}
+
+
+
+
+.ui.active.dimmer {
+  opacity:0.7;
+      transition: opacity 5.5s cubic-bezier(0, 0, 0, 0.64);
+
+}
+
+.ui.dimmer {
+  opacity:0.7;
+      transition: opacity 5.5s cubic-bezier(0, 0, 0, 0.64);
+
 }
 </style>
