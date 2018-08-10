@@ -1,13 +1,17 @@
+import "babel-polyfill";
 import Typography from 'typography';
 import funstonTheme from 'typography-theme-funston';
 //import funstonTheme from 'typography-theme-wordpress-2013';
-import 'intersection-observer';
+require('intersection-observer');
 const scrollama = require("scrollama");
 const d3 = require("d3");
-const enterView = require("enter-view");
 const stickyfill = require("stickyfill");
 const Stickyfill = stickyfill();
 import "./main.css";
+
+window.scrollama = scrollama;
+window.d3 = d3;
+window.stickyfill = stickyfill;
 
 var typography = new Typography(funstonTheme);
 
@@ -25,14 +29,14 @@ var typography = new Typography(funstonTheme);
 typography.injectStyles();
 
 // using d3 for convenience
-		var container = d3.select('#scroll');
-		var graphic = container.select('.scroll__graphic');
-		var chart = graphic.select('.chart');
-		var text = container.select('.scroll__text');
-		var step = text.selectAll('.step');
+		const container = d3.select('#scroll');
+		const graphic = container.select('.scroll__graphic');
+		const chart = graphic.select('.chart');
+		const text = container.select('.scroll__text');
+		const step = text.selectAll('.step');
 
 		// initialize the scrollama
-		var scroller = scrollama();
+		const scroller = scrollama();
 
 		// generic window resize listener event
 		function handleResize() {
