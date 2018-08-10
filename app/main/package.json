@@ -16,8 +16,15 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
+    "d3": "^5.5.0",
+    "enter-view": "^1.0.0",
+    "file-loader": "^1.1.11",
+    "intersection-observer": "^0.5.0",
+    "scrollama": "^1.4.3",
+    "stickyfill": "^1.1.1-strict",
     "typography": "^0.16.17",
     "typography-theme-funston": "^0.15.10",
+    "typography-theme-wordpress-2013": "^0.15.10",
     "webpack": "^4.16.5"
   },
   "devDependencies": {
