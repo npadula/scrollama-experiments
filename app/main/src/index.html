@@ -1,6 +1,10 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
 
     <title>
         Nicolas Padula
@@ -48,10 +52,62 @@
 		</div>
 		<div class='scroll__text'>
 			<div class='step' data-step='1'>
-				<p>STEP 1</p>
+				
+<div class="container">
+
+  
+
+    <div class="post-module">
+
+      <div class="post-content mt5">
+        <div class="category">APR 2017 - PRESENT</div>
+        <h1 class="f2">Diveria</h1>
+        <h2 class="sub_title">Full Stack Developer</h2>
+        <p class="db f5 lh-copy tl">
+			Diveria is a full-cycle software development and consulting company located 
+			in Santa Fe. With more than 13+ years of experience building software for
+			a broad range of industries and plattforms, Diveria's focus on quality (ISO 9001:2008 certified), effective comunication and strategic vision, has allowed the company to be a part of a multitude of projects, 
+			working alongside clients in all stages of the development process,
+			from the definition of goals all the way to implementation.
+		
+		</p>
+        <div class="post-meta">
+			<span class="timestamp"><i class="fa fa-map-marker"></i> Santa Fe, AR</span>
+		</div>
+      </div>
+    </div>
+ 
+</div>
+			
 			</div>
 			<div class='step' data-step='2'>
-				<p>STEP 2</p>
+			<!--
+				<div class="container">
+
+  
+
+    
+    <div class="post-module">
+      <div class="thumbnail">
+        <div class="date">
+          <div class="day">27</div>
+          <div class="month">Mar</div>
+        </div><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/photo-1429043794791-eb8f26f44081.jpeg"/>
+      </div>
+      <div class="post-content">
+        <div class="category">APR 2017 - PRESENT</div>
+        <h1 class="title">Diveria</h1>
+        <h2 class="sub_title">Full Stack Developer</h2>
+        <p class="description">New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
+        <div class="post-meta">
+			<span class="timestamp"><i class="fa fa-map-marker"></i> Santa Fe, AR</span>
+			<span class="comments"><i class="fa fa-comments"></i><a href="#"> 39 comments</a></span>
+		</div>
+      </div>
+    </div>
+ 
+</div>
+			-->
 			</div>
 			<div class='step' data-step='3'>
 				<p>STEP 3</p>
@@ -67,4 +123,14 @@
 <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+<script>
+$(window).on('load',function() {
+  $('.post-module').hover(function() {
+    $(this).find('.description').stop().animate({
+      height: "toggle",
+      opacity: "toggle"
+    }, 300);
+  });
+});
+</script>
 </html>
