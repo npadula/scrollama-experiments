@@ -43,11 +43,10 @@ function handleResize() {
     console.log("handleResize");
     // 1. update height of step elements
     const baseStepHeight = Math.floor(window.innerHeight * 0.7);
-    //step.style('height', baseStepHeight + 'px');
 
 
     for (let s of step.nodes()) {
-        const node = d3.select(s).select(".post-content").node();
+        const node = d3.select(s).select(".entry-content").node();
         const innerHeight = node ? node.offsetHeight + 100 : baseStepHeight;
 
         d3.select(s).style("height", innerHeight + 'px');
@@ -130,7 +129,6 @@ function init() {
 
 
 
-// setup resize event
 
 window.addEventListener('load', () => {
     console.log("load");
@@ -144,5 +142,3 @@ window.addEventListener('load', () => {
 
 
 });
-
-// kick things off
