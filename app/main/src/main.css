@@ -3,7 +3,16 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.entry {
+.a-red,
+.a-red:visited,
+.a-red:hover {
+    color: #f30;
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+}
+
+.entry,
+.step-detail {
     position: relative;
     z-index: 1;
     display: block;
@@ -21,6 +30,7 @@ body {
 }
 
 .entry:hover,
+.step-detail:hover,
 .hover {
     -webkit-box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3);
@@ -163,21 +173,7 @@ hr.slashed-hr {
     -moz-transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
-    background-color: #ddd;
-}
-
-.chart p {
-    text-align: center;
-    padding: 1rem;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -moz-transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    font-size: 8rem;
-    font-weight: 900;
-    color: #666;
+    /*background-color: #ddd;*/
 }
 
 .scroll__text {
@@ -193,4 +189,10 @@ hr.slashed-hr {
 
 .step.is-active {
     background-color: lightgoldenrodyellow;
+}
+
+@media screen and (max-height: 650px) {
+    .chart {
+        top: 35%;
+    }
 }

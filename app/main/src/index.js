@@ -1,7 +1,6 @@
 import "babel-polyfill";
 import Typography from 'typography';
 import funstonTheme from 'typography-theme-funston';
-//import funstonTheme from 'typography-theme-wordpress-2013';
 require('intersection-observer');
 const scrollama = require("scrollama");
 const d3 = require("d3");
@@ -13,7 +12,7 @@ window.scrollama = scrollama;
 window.d3 = d3;
 window.stickyfill = stickyfill;
 
-var typography = new Typography(funstonTheme);
+const typography = new Typography(funstonTheme);
 
 WebFont.load({
     google: {
@@ -34,15 +33,29 @@ const graphic = container.select('.scroll__graphic');
 const chart = graphic.select('.chart');
 const text = container.select('.scroll__text');
 const step = text.selectAll('.step');
+const stepDetails = d3.selectAll(".step-detail");
 
 // initialize the scrollama
 const scroller = scrollama();
 
+
+var handleResizeExecuting;
+
+function handleResizeThrottled() {
+    if (!handleResizeExecuting) {
+        handleResizeExecuting = setTimeout(function() {
+            handleResizeExecuting = null;
+            handleResize();
+        }, 150);
+    }
+}
+
 // generic window resize listener event
 function handleResize() {
-    console.log("handleResize");
+    console.log("handleresize");
+    d3.selectAll(".step-details").style("display", "none");
     // 1. update height of step elements
-    const baseStepHeight = Math.floor(window.innerHeight * 0.7);
+    const baseStepHeight = Math.floor(window.innerHeight * 0.75);
 
 
     for (let s of step.nodes()) {
@@ -78,14 +91,46 @@ function handleResize() {
 // scrollama event handlers
 function handleStepEnter(response) {
     // response = { element, direction, index }
+    console.log(response);
+    const newStepNumber = response.index + 1;
+    const prevStepNumber = (response.direction == "down") ? newStepNumber - 1 : newStepNumber + 1;
+
 
     // add color to current step only
     step.classed('is-active', function(d, i) {
         return i === response.index;
     });
 
-    // update graphic based on step
-    chart.select('p').text(response.index + 1);
+    const newStepDetail = stepDetails.nodes().filter(function(n) {
+        return n.getAttribute("data-step") == newStepNumber;
+    })[0];
+
+    const prevStepDetail = stepDetails.nodes().filter(function(n) {
+        return n.getAttribute("data-step") == prevStepNumber;
+    })[0];
+
+
+
+
+
+    d3.select(prevStepDetail).transition()
+        .duration(300)
+        .ease(d3.easeLinear)
+        .style("opacity", 0);
+
+    stepDetails.style("display", "none");
+
+    d3.select(newStepDetail).transition()
+        .duration(300)
+        .ease(d3.easeLinear)
+        .style("opacity", 1)
+        .style("display", "block");
+
+
+
+
+
+
 }
 
 function handleContainerEnter(response) {
@@ -103,7 +148,6 @@ function setupStickyfill() {
 }
 
 function init() {
-    console.log("init");
     setupStickyfill();
     // 1. force a resize on load to ensure proper dimensions are sent to scrollama
     handleResize();
@@ -123,7 +167,8 @@ function init() {
         .onContainerEnter(handleContainerEnter)
         .onContainerExit(handleContainerExit);
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResizeThrottled);
+    window.addEventListener("orientationchange", handleResizeThrottled);
 
 }
 
@@ -131,13 +176,10 @@ function init() {
 
 
 window.addEventListener('load', () => {
-    console.log("load");
-
-    init();
 
 
     setTimeout(() => {
-        handleResize();
+        init();
     }, 500);
 
 
